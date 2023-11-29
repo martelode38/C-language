@@ -1,22 +1,52 @@
+
 #include <stdio.h>
 
-void main()
-{
-    float n1 = 0, n2 = 0, nota_final = 0;
-
-    scanf("%f%f", &n1,&n2);
-
-    if(n1 < 0 || n1 > 10 || n2 < 0 || n2 > 10){
-        printf("insira notas validas de 0 a 10.");
-    }else{
+int horasJogadas(int h1, int m1, int h2, int m2){
 
 
-        nota_final = ((n1*2)+(n2*3))/5;
+    int horas, minutos;
 
-        printf("%.2f", nota_final);
+    if(h1 < h2 && m1 < m2){
+
+        horas = h2-h1;
+        minutos = m2 - m1;
+
+
+    }if(h2 < h1){
+
+        horas = 24 + (h2-h1);
+
+        if(m1 > m2){
+            minutos = 60 - (m1 - m2);
+        }else{
+
+            minutos = m2 - m1;
+
+        }
+    }if(h1 < h2){
+        horas = h2 - h1;
+
+        if(m1 > m2){
+            minutos = 60 - (m1 - m2);
+        }else{
+
+            minutos = m2 - m1;
+
+        }
 
     }
 
+    printf("%d:%d horas jogadas\n", horas, minutos);
+    return 0;
+
+}
 
 
+int main()
+{
+    horasJogadas(16,30,12,50);
+    horasJogadas(12,30,16,50);
+    horasJogadas(12,50,18,30);
+    horasJogadas(16,30,12,50);
+    return 0;
 }
